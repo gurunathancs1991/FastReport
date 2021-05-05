@@ -1,0 +1,30 @@
+{
+    "Employees": [
+        {
+            "Id": "DM0100",
+            "Name": "Jack mike",
+            "Location": "Kolkatta",
+            "Doj": "26th Sep 2021",
+            "Pan": "BASIOK23C",
+            "Designation": "Consultant",
+            "BankName": "SBI",
+            "AccountNo": "1222323231",
+            "WorkDays": "30",
+            "StandardDays": "30",
+            "LopDays": 2,
+            "Pf": "10203028930201",
+            "Uan": "10203028930201",
+            "Esi": "10203028930201",
+            "BasicActual": "12000",
+            "BasicEarned": "12000",
+            "HraActual": "12000",
+            "HraEarned": "12000",
+            "TotEarned": "24000",
+            "ProfTax": "200",
+            "IncomeTax": "500",
+            "TotDec": "700",
+            "NetSalary": "23300",
+            "Words": "Rupees Twenty Three thousands three hundreds only"    
+        }
+    ]   
+}
