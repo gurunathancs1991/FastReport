@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" TextQuality="Regular" ReportInfo.Created="01/17/2008 17:08:04" ReportInfo.Modified="05/14/2019 12:22:37" ReportInfo.CreatorVersion="1.0.0.0">
+  <Styles Name="Standard">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+
+  <Dictionary>
+    <TableDataSource Name="Employees" ReferenceName="Data.Employees" Enabled="true">     
+      <Column Name="Name" DataType="System.String"/>
+    </TableDataSource>
+   
+  </Dictionary>
+  <ReportPage Name="Page1" Columns.Count="2" Columns.Width="95" Columns.Positions="0,95" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1">
+   
+    </ReportTitleBand>
+    
+    <PageFooterBand Name="PageFooter1" Top="215.34" Width="718.2" Height="28.35" Fill.Color="WhiteSmoke">
+     
+    </PageFooterBand>
+  </ReportPage>
+</Report>

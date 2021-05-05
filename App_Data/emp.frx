@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" TextQuality="Regular" ReportInfo.Created="01/17/2008 17:08:04" ReportInfo.Modified="05/14/2019 12:22:37" ReportInfo.CreatorVersion="1.0.0.0">
+  <Styles Name="Standard">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <TableDataSource Name="Employees" ReferenceName="Data.Employees" Enabled="true">     
+      <Column Name="Name" DataType="System.String"/>
+    </TableDataSource>
+   
+  </Dictionary>
+  <ReportPage Name="Page1" Columns.Count="2" Columns.Width="95" Columns.Positions="0,95" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="94.5" CanGrow="true">
+      <TextObject Name="Text1" Top="56.7" Width="718.2" Height="37.8" Dock="Bottom" Text="Payslip - March 2021" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 14pt, style=Bold"/>
+      <TextObject Name="Text1" Top="56.7" Width="718.2" Height="37.8" Dock="Bottom" Text="Allsec Technologies Limited" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 14pt, style=Bold"/>
+
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="98.22" Width="359.1" Height="113.4" CanGrow="true" DataSource="Employees">
+      <TableObject Name="Table1" Left="9.45" Top="9.45" Width="340.2" Height="103.95" HorzAlign="Left">
+        <TableColumn Name="Column1" Width="151.2"/>
+        <TableColumn Name="Column2" Width="189"/>
+        <TableRow Name="Row1" AutoSize="true">
+          <TableCell Name="Cell6" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="Employee Name" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.Name]" Padding="2, 2, 2, 2" Font="Tahoma,11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row2" AutoSize="true">
+          <TableCell Name="Cell6" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="Location" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.Location]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row3" AutoSize="true">
+          <TableCell Name="Cell11" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="PAN" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell12" Fill.Color="LightGray" Text="[Employees.Pan]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row4" AutoSize="true">
+          <TableCell Name="Cell16" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="Designation" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell17" Fill.Color="LightGray" Text="[Employees.Designation]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>       
+      </TableObject>
+   <TableObject Name="Table1" Left="350" Top="9.45" Width="340.2" Height="103.95" HorzAlign="Right">
+        <TableColumn Name="Column1" Width="151.2"/>
+        <TableColumn Name="Column2" Width="189"/>
+      <TableRow Name="Row2" AutoSize="true">
+          <TableCell Name="Cell6" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="Bank Name" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.BankName]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row2" AutoSize="true">
+          <TableCell Name="Cell6" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="Account No" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.AccountNo]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row3" AutoSize="true">
+          <TableCell Name="Cell11" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="PF Account No" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell12" Fill.Color="LightGray" Text="[Employees.Pf]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row4" AutoSize="true">
+          <TableCell Name="Cell16" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="Employee No" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell17" Fill.Color="LightGray" Text="[Employees.Id]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+       
+      </TableObject>
+    </DataBand>
+ <DataBand Name="Data1" Top="98.22" Width="359.1" Height="113.4" CanGrow="true" DataSource="Employees">
+      <TableObject Name="Table1" Left="9.45" Top="9.45" Width="340.2" Height="103.95" HorzAlign="Left">
+        <TableColumn Name="Column1" Width="151.2"/>
+        <TableColumn Name="Column2" Width="189"/>
+      <TableRow Name="Row1" AutoSize="true">
+          <TableCell Name="Cell6" B Border.Color="White" Fill.Color="ForestGreen" Text="Earnings" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+       <TableRow Name="Row1" AutoSize="true">
+          <TableCell Name="Cell6"  Border.Color="White" Fill.Color="ForestGreen" Text="Basic" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.BasicEarned]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row2" AutoSize="true">
+          <TableCell Name="Cell6" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="HRA" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.HraEarned]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        
+        <TableRow Name="Row5" AutoSize="true">
+          <TableCell Name="Cell21" Border.Lines="Right" Border.Color="White" Fill.Color="ForestGreen" Text="Net Salary" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell22" Fill.Color="LightGray" Text="[Employees.TotEarned]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+      </TableObject>
+   <TableObject Name="Table1" Left="350" Top="9.45" Width="340.2" Height="103.95" HorzAlign="Right">
+        <TableColumn Name="Column1" Width="151.2"/>
+        <TableColumn Name="Column2" Width="189"/>
+        <TableRow Name="Row1" AutoSize="true">
+          <TableCell Name="Cell6" Border.Color="White" Fill.Color="ForestGreen" Text="Deductions" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+         <TableRow Name="Row1" AutoSize="true">
+          <TableCell Name="Cell6" Border.Color="White" Fill.Color="ForestGreen" Text="Professional Tax" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.ProfTax]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row2" AutoSize="true">
+          <TableCell Name="Cell6"  Border.Color="White" Fill.Color="ForestGreen" Text="Income Tax" Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Fill.Color="LightGray" Text="[Employees.IncomeTax]" Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        <TableRow Name="Row3" AutoSize="true">
+          <TableCell Name="Cell11" Border.Lines="Right" Border.Color="White" Fill.Color="LightGray" Text="   " Padding="5, 2, 0, 2" Font="Tahoma, 11pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell12" Fill.Color="LightGray" Text="   " Padding="2, 2, 2, 2" Font="Tahoma, 11pt" TextFill.Color="Black"/>
+        </TableRow>
+        
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="215.34" Width="718.2" Height="28.35" Fill.Color="WhiteSmoke">
+     
+    </PageFooterBand>
+  </ReportPage>
+</Report>

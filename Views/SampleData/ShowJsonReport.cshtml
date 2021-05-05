@@ -1,0 +1,20 @@
+
+@{
+    ViewData["Title"] = "ShowJSONReport";
+}
+
+<style type="text/css">
+
+[class$="-report"] > div,
+[class*="-report "] {
+    width: 100% !imporant;
+}
+
+
+
+</style>
+
+@await ViewBag.WebReport.Render()
+
+
+
