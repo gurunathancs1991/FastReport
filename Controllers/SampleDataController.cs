@@ -10,6 +10,8 @@ using System.IO;
 using FastReport.Format;
 using FastReport.Table;
 using FastReport.Utils;
+using System.Collections.Generic;
+using SPAWebReport.Models;
 
 
 
@@ -18,23 +20,9 @@ namespace SPAWebReport.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-
+        
         [HttpGet("[action]")]
-        public IActionResult ShowReport()
-        {
-            WebReport WebReport = new WebReport();
-            WebReport.Width = "1000";
-            WebReport.Height = "1000";
-            WebReport.Report.Load("App_Data/Master-Detail.frx"); //��������� ����� � ������ WebReport
-            System.Data.DataSet dataSet = new System.Data.DataSet(); //������� �������� ������
-            dataSet.ReadXml("App_Data/nwind.xml");  //��������� ���� ������ xml
-            WebReport.Report.RegisterData(dataSet, "NorthWind"); //������������ �������� ������ � ������
-            ViewBag.WebReport = WebReport; //�������� ����� �� View
-            return View();
-        }
-
-        [HttpGet("[action]")]
-        public IActionResult ShowJsonReport() {
+        public IActionResult ShowReport() {
            
             WebReport WebReport = new WebReport();            
             WebReport.Height = "1000";
@@ -45,6 +33,13 @@ namespace SPAWebReport.Controllers
             return View();
         }
 
+         
+        [HttpGet("[action]")]
+        public IActionResult Data() {           
+            LoadData();
+            return View();
+        }
+        
         
         public Report GetSimpleListReport()
         {
@@ -92,15 +87,6 @@ namespace SPAWebReport.Controllers
             titleText3.HorzAlign = HorzAlign.Left;
             titleText3.VertAlign = VertAlign.Center;
             titleText3.Style = "padding: 5px 0 0 0;";
-
-            // LineObject SecondHeadObj = new LineObject();
-            // SecondHeadObj.Parent = page.ReportTitle;
-            // FirstHeadObj.Bounds = new RectangleF(0, 60, 1200, 2);
-            // SecondHeadObj.Border.Lines = BorderLines.All;
-            // SecondHeadObj.Border.Width = Convert.ToSingle(1);
-            // SecondHeadObj.Border.Style = LineStyle.Solid;
-            // SecondHeadObj.Border.Color = Color.LightGray;
-
 
             // Header
 
@@ -296,22 +282,7 @@ namespace SPAWebReport.Controllers
             dataBand.Objects.Add(SalTable);
             
 
-            // create two text objects with employee's name and birth date
-            // TextObject empNameText = new TextObject();
-            // empNameText.Parent = dataBand;
-            // empNameText.CreateUniqueName();
-            // empNameText.Bounds = new RectangleF(0, 0, Units.Centimeters * 5, Units.Centimeters * 0.5f);
-            // empNameText.Text = "[Employees.Name]";
-
-            // TextObject empBirthDateText = new TextObject();
-            // empBirthDateText.Parent = dataBand;
-            // empBirthDateText.CreateUniqueName();
-            // empBirthDateText.Bounds = new RectangleF(Units.Centimeters * 5.5f, 0, Units.Centimeters * 3, Units.Centimeters * 0.5f);
-            // empBirthDateText.Text = "[Employees.Doj]";
-            // // format value as date
-            // DateFormat format = new DateFormat();
-            // format.Format = "MM/dd/yyyy";
-            // empBirthDateText.Format = format;
+            
 
             return report;
         }      
@@ -431,7 +402,7 @@ namespace SPAWebReport.Controllers
 
 
         [HttpGet("[action]")]
-        public FileResult JsonPdfExport(){
+        public FileResult PdfExport(){
 
             Report data = GetSimpleListReport();
             data.Prepare();           
@@ -447,28 +418,6 @@ namespace SPAWebReport.Controllers
             return Download();           
         } 
 
-          [HttpGet("[action]")]
-        public FileResult PdfExport(){
-
-            WebReport WebReport = new WebReport();
-            WebReport.Width = "1000";
-            WebReport.Height = "1000";
-            WebReport.Report.Load("App_Data/Master-Detail.frx"); //��������� ����� � ������ WebReport
-            System.Data.DataSet dataSet = new System.Data.DataSet(); //������� �������� ������
-            dataSet.ReadXml("App_Data/nwind.xml");  //��������� ���� ������ xml
-            WebReport.Report.RegisterData(dataSet, "NorthWind"); 
-            WebReport.Report.Prepare();
-            PDFSimpleExport pdfExport1 = new PDFSimpleExport();
-            try{
-                System.IO.File.Delete("Payslip.pdf");
-            }
-            catch{
-
-            }
-            pdfExport1.Export(WebReport.Report, "Payslip.pdf");
-            return Download();
-           
-        } 
         public FileResult Download()
         {
             byte[] fileBytes = System.IO.File.ReadAllBytes("Payslip.pdf");
@@ -476,5 +425,25 @@ namespace SPAWebReport.Controllers
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
+        public void LoadData(){
+            DataTable ETable = new DataTable();
+            ETable.Columns.Add("Key", Type.GetType("System.String"));
+            ETable.Columns.Add("Value", Type.GetType("System.String"));
+            string text = System.IO.File.ReadAllText("App_Data/wages.json");
+            List<WageModel> DataList = JsonConvert.DeserializeObject<List<WageModel>>(text);
+            if(DataList.Count > 0 ){
+                ETable.Rows.Add(new object[]{ "EmployeeName", DataList[0].EmployeeName});
+                ETable.Rows.Add(new object[]{ "EmployeeCode", DataList[0].EmployeeCode});
+                List<Dictionary<string, string>> ListComponent = new List<Dictionary<string, string>>();
+                foreach(WageModel wage in DataList){
+                  Dictionary<string, string> comp = WageProcess.GetWageComponent(wage);
+                   foreach(var item in comp){
+                        ETable.Rows.Add(new object[]{ item.Key, item.Value });
+                   }                
+                }
+               
+            }
+            
+        }
     }
 }
